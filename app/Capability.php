@@ -27,18 +27,26 @@ final class Capability
      */
     const VIEW_USER_ADDRESS_DATA = (1 << 1) | Capability::VIEW_USER_NAMES;
     /**
+     * View every users date of birth
+     *
+     * Implies VIEW_USER_NAMES.
+     */
+    const VIEW_USER_DATE_OF_BIRTH = (1 << 2) | Capability::VIEW_USER_NAMES;
+    /**
      * View all additional user data that is specified via configuration as well as
      * their group memberships.
      *
-     * Implies VIEW_USER_ADDRESS_DATA.
+     * Implies VIEW_USER_ADDRESS_DATA and VIEW_USER_DATE_OF_BIRTH.
      */
-    const VIEW_USER_ATTRIBUTES = (1 << 2) | Capability::VIEW_USER_ADDRESS_DATA;
+    const VIEW_USER_ATTRIBUTES = (1 << 3)
+    | Capability::VIEW_USER_ADDRESS_DATA
+    | Capability::VIEW_USER_DATE_OF_BIRTH;
     /**
      * Create, update and delete users.
      *
      * Implies VIEW_USER_ATTRIBUTES.
      */
-    const MANAGE_USERS = (1 << 3) | Capability::VIEW_USER_ATTRIBUTES;
+    const MANAGE_USERS = (1 << 4) | Capability::VIEW_USER_ATTRIBUTES;
 
     /**
      * This class must not be instantiated.

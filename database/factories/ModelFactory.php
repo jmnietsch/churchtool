@@ -14,11 +14,15 @@ use app\Capability as C;
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+    $sex = $faker->boolean() ? 'm' : 'f';
     return [
-        'name' => $faker->name,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
+        'sex' => $sex,
+        'first_name' => $sex == 'm' ? $faker->firstNameMale : $faker->firstNameFemale,
+        'last_name' => $faker->lastName,
         'remember_token' => str_random(10),
+        'active' => $faker->boolean(80)
     ];
 });
 

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password', 'first_name', 'last_name', 'date_of_birth', 'active'
     ];
 
     /**
@@ -79,6 +79,16 @@ class User extends Authenticatable
             if ($group->pivot->is_admin)
                 $this->capabilities |= $group->admin_capabilities;
         }
+    }
+
+    /**
+     * Check if this user is active (i.e. allowed to log in).
+     *
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->active;
     }
 
 }
