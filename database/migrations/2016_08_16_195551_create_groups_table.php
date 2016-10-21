@@ -17,7 +17,6 @@ class CreateGroupsTable extends Migration
             $table->string('name')->unique();
             $table->bigInteger('member_capabilities')->default(0b0);
             $table->bigInteger('admin_capabilities')->default(0b0);
-            $table->boolean('enable_mail')->default(false);
             $table->timestamps();
         });
     }

@@ -18,7 +18,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'first_name', 'last_name', 'date_of_birth', 'active'
+        'email',
+        'password',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'active',
+        'sex',
     ];
 
     /**
@@ -41,6 +47,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Return the groups this user is member of.
+     *
+     * @return Group[]
+     */
+    public function groupsMember()
+    {
+        return $this->groups()->wherePivot('is_admin', '=', false);
+    }
+
+    /**
      * Return the groups this user belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -48,6 +64,16 @@ class User extends Authenticatable
     public function groups()
     {
         return $this->belongsToMany('App\Group')->withPivot('is_admin')->withTimestamps();
+    }
+
+    /**
+     * Return the groups where this user is admin.
+     *
+     * @return Group[]
+     */
+    public function groupsAdmin()
+    {
+        return $this->groups()->wherePivot('is_admin', '=', true);
     }
 
     /**

@@ -2,11 +2,9 @@
 
 namespace App\Api\V1\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Config;
 use Dingo\Api\Exception\ValidationHttpException;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Password;
@@ -14,9 +12,8 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
-    use Helpers;
 
     public function recovery(Request $request)
     {
