@@ -77,6 +77,14 @@ class CapabilityTest extends TestCase
         $this->assertFalse($this->member->hasCapability(C::MANAGE_USERS));
     }
 
+    public function testCapabilitiesToArray()
+    {
+        $c = C::VIEW_USER_ADDRESS_DATA;
+        $expected = ['VIEW_USER_NAMES', 'VIEW_USER_ADDRESS_DATA'];
+        $is = \App\Capability::toArray($c);
+        $this->assertArraySubset($is, $expected);
+    }
+
     /**
      * Set up a user that is member of two groups and one that is admin
      * of the two groups.

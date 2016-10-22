@@ -68,4 +68,26 @@ final class Capability
         }
     }
 
+    /**
+     * Convert a capability to an array of strings.
+     *
+     * @param integer $capability
+     * @return array
+     */
+    public static function toArray($capability)
+    {
+        $result = [];
+
+        $props = (new \ReflectionClass('\App\Capability'))->getConstants();
+        $lookup = array_keys(array_slice($props, 1));
+
+        for ($i = 0; $i < 63; ++$i) {
+            if ($capability & (1 << $i)) {
+                array_push($result, $lookup[$i]);
+            }
+        }
+
+        return $result;
+    }
+
 }

@@ -21,7 +21,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'sex' => $sex,
         'first_name' => $sex == 'm' ? $faker->firstNameMale : $faker->firstNameFemale,
         'last_name' => $faker->lastName,
-        'remember_token' => str_random(10),
         'active' => $faker->boolean(80)
     ];
 });
