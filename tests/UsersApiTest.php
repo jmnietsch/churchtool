@@ -6,8 +6,6 @@ class UsersApiTest extends TestCase
 {
     use DatabaseMigrations;
 
-    protected static $db_initialized = false;
-
     /**
      * Test that a user with the required capabilities can see all user data here.
      */

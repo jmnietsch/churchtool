@@ -8,12 +8,10 @@ use App\Http\Requests\GetUsersRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Transformers\V1\UsersTransformer;
 use App\User;
-use Dingo\Api\Routing\Helpers;
 
 
 class UsersController extends BaseController
 {
-    use Helpers;
 
     public function index(GetUsersRequest $request)
     {
