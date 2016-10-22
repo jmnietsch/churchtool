@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
+
+    public static $data = '';
+
     /**
      * Run the database seeds.
      *
@@ -16,7 +19,6 @@ class UsersTableSeeder extends Seeder
                 1,
                 'josh.s@gmx.de',
                 bcrypt('josh'),
-                'my nickname',
                 'm',
                 'Josua',
                 'Schmidt',
@@ -27,7 +29,6 @@ class UsersTableSeeder extends Seeder
                 2,
                 'elena.marquardt@gmail.com',
                 bcrypt('elena'),
-                'my first name',
                 'f',
                 'Elena',
                 'Marquardt',
@@ -38,7 +39,6 @@ class UsersTableSeeder extends Seeder
                 3,
                 'mathis@hoffpost.de',
                 bcrypt('secret'),
-                'very secret',
                 'm',
                 'Mathis',
                 'Hoffmann',
@@ -49,7 +49,6 @@ class UsersTableSeeder extends Seeder
                 4,
                 'axel87@hotmail.com',
                 bcrypt('axe'),
-                'hmm',
                 'm',
                 'Axel',
                 'Müller',
@@ -60,7 +59,6 @@ class UsersTableSeeder extends Seeder
                 5,
                 'claudia.mueller@gmail.com',
                 bcrypt('mmm'),
-                'dont need that',
                 'f',
                 'Claudia',
                 'Müller',
@@ -68,11 +66,14 @@ class UsersTableSeeder extends Seeder
                 true,
             ],
         ];
+
+        // store data in static property
+        self::$data = $data;
+
         $keys = [
             'id',
             'email',
             'password',
-            'remember_token',
             'sex',
             'first_name',
             'last_name',

@@ -33,7 +33,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'date_of_birth',
     ];
 
     /**
@@ -107,14 +118,5 @@ class User extends Authenticatable
         }
     }
 
-    /**
-     * Check if this user is active (i.e. allowed to log in).
-     *
-     * @return boolean
-     */
-    public function isActive()
-    {
-        return $this->active;
-    }
 
 }

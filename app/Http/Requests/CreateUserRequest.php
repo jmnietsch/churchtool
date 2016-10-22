@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Dingo\Api\Http\FormRequest;
 use Gate;
 
-class UpdateUserRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,9 +14,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        $user = $this->route('user');
-
-        return Gate::allows('update-user', [$user]);
+        return Gate::allows('create-user');
     }
 
     /**
@@ -30,7 +28,7 @@ class UpdateUserRequest extends FormRequest
             'sex' => 'required|in:m,f',
             'firstName' => 'required|string|between:3,255',
             'lastName' => 'required|string|between:3,255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'dateOfBirth' => 'date|before:today',
         ];
     }

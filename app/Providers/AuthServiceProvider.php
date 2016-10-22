@@ -48,5 +48,46 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->hasCapability(Capability::MANAGE_USERS) || ($user == $subject);
             }
         );
+
+        /**
+         * Check if user is allowed to see a user's email adress.
+         * @todo Maybe we should in general allow a user the see the subjects email adress if they belong to the same group..?
+         */
+        Gate::define(
+            'get-user-email',
+            function (User $user, User $subject) {
+                return $user->hasCapability(Capability::VIEW_USER_ADDRESS_DATA);
+            }
+        );
+
+        /**
+         * Check if user is allowed to see a user's date of birth
+         */
+        Gate::define(
+            'get-user-dateofbirth',
+            function (User $user, User $subject) {
+                return $user->hasCapability(Capability::VIEW_USER_DATE_OF_BIRTH);
+            }
+        );
+
+        /**
+         * Check if user is allowed to create a user.
+         */
+        Gate::define(
+            'create-user',
+            function (User $user) {
+                return $user->hasCapability(Capability::MANAGE_USERS);
+            }
+        );
+
+        /**
+         * Check if user is allowed to delete a user.
+         */
+        Gate::define(
+            'delete-user',
+            function (User $user) {
+                return $user->hasCapability(Capability::MANAGE_USERS);
+            }
+        );
     }
 }

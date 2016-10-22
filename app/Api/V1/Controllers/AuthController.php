@@ -85,7 +85,7 @@ class AuthController extends BaseController
         $user = User::whereEmail($credentials['email'])->first();
 
         try {
-            if ((!$token = JWTAuth::fromUser($user)) or (!$user->isActive())) {
+            if ((!$token = JWTAuth::fromUser($user)) or (!$user->active)) {
                 $this->response->errorUnauthorized();
             }
         } catch (JWTException $e) {
