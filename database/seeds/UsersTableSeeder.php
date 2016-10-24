@@ -65,6 +65,16 @@ class UsersTableSeeder extends Seeder
                 \Carbon\Carbon::create(1977, 1, 1),
                 true,
             ],
+            [
+                6,
+                'bern75@gmx.de',
+                bcrypt('derbernd'),
+                'm',
+                'Bernd',
+                'Schleicher',
+                \Carbon\Carbon::create(1975, 6, 3),
+                true,
+            ],
         ];
 
         // store data in static property

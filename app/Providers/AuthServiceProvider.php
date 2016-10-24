@@ -89,5 +89,38 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->hasCapability(Capability::MANAGE_USERS);
             }
         );
+
+        /**
+         * Check if user is allowed to view a group.
+         */
+        Gate::define(
+            'get-group',
+            function (User $user) {
+                return $user->hasCapability(Capability::VIEW_GROUPS);
+            }
+        );
+
+        /**
+         * Check if user is allowed to create and update a group.
+         */
+        Gate::define(
+            'create-update-group',
+            function (User $user) {
+                return $user->hasCapability(Capability::MANAGE_GROUPS);
+            }
+        );
+
+        /**
+         * Check if user is allowed to create and update a group.
+         */
+        Gate::define(
+            'delete-group',
+            function (User $user) {
+                return $user->hasCapability(Capability::MANAGE_GROUPS);
+            }
+        );
+
+
+
     }
 }

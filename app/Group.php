@@ -17,8 +17,17 @@ class Group extends Model
      */
     protected $fillable = [
         'name',
-        'enable_mail'
+        'member_capabilities',
+        'admin_capabilities',
     ];
+
+    /**
+     * Get the admins of this group.
+     */
+    public function admins()
+    {
+        return $this->users()->wherePivot('is_admin', true);
+    }
 
     /**
      * Get users that belong to this group.
@@ -26,6 +35,14 @@ class Group extends Model
     public function users()
     {
         return $this->belongsToMany('App\User')->withPivot('is_admin')->withTimestamps();
+    }
+
+    /**
+     * Get the members of this group.
+     */
+    public function members()
+    {
+        return $this->users()->wherePivot('is_admin', false);
     }
 
     /**

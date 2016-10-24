@@ -1,5 +1,6 @@
 <?php
 
+use App\Capability;
 use Illuminate\Database\Seeder;
 
 class GroupsTableSeeder extends Seeder
@@ -15,10 +16,21 @@ class GroupsTableSeeder extends Seeder
             [
                 1,
                 'Mitglieder',
-                \App\Capability::VIEW_USER_ADDRESS_DATA,
-                \App\Capability::MANAGE_USERS,
+                Capability::VIEW_USER_ADDRESS_DATA,
+                Capability::MANAGE_USERS,
             ],
-            [2, 'Alle', \App\Capability::VIEW_USER_NAMES, 0b0],
+            [
+                2,
+                'Alle',
+                Capability::VIEW_USER_NAMES | Capability::VIEW_GROUPS,
+                0b0,
+            ],
+            [
+                3,
+                'Gruppenverwaltung',
+                Capability::MANAGE_GROUPS,
+                Capability::MANAGE_GROUPS,
+            ],
         ];
         $keys = ['id', 'name', 'member_capabilities', 'admin_capabilities'];
 

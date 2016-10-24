@@ -54,9 +54,16 @@ final class Capability
     const MANAGE_USERS = (1 << 4) | Capability::VIEW_USER_ATTRIBUTES;
 
     /**
-     * Create, update and delete groups.
+     * View all group entries.
      */
-    const MANAGE_GROUPS = (1 << 5);
+    const VIEW_GROUPS = (1 << 5);
+
+    /**
+     * Create, update and delete groups.
+     *
+     * Implies VIEW_GROUPS.
+     */
+    const MANAGE_GROUPS = (1 << 6) | Capability::VIEW_GROUPS;
 
     /**
      * This class must not be instantiated.

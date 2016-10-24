@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use DB;
 use Dingo\Api\Transformer\Adapter\Fractal;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\ServiceProvider;
@@ -28,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
                 $fractal = new Manager();
                 $fractal->setSerializer(new JsonApiSerializer());
 
-                return new Fractal($fractal);
+                return new Fractal($fractal, 'include', ',');
             }
         );
 
@@ -45,6 +46,12 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
+
+        // Enable foreign keys for SQLITE
+        // taken from http://stackoverflow.com/questions/31228950/laravel-5-1-enable-sqlite-foreign-key-constraints
+        if (DB::connection() instanceof \Illuminate\Database\SQLiteConnection) {
+            DB::statement(DB::raw('PRAGMA foreign_keys=1'));
+        }
     }
 
     /**

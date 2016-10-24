@@ -16,6 +16,11 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
             $api->post('users', 'App\Api\V1\Controllers\UsersController@create');
             $api->put('users/{user}', 'App\Api\V1\Controllers\UsersController@update');
             $api->delete('users/{user}', 'App\Api\V1\Controllers\UsersController@delete');
+
+            $api->get('groups', 'App\Api\V1\Controllers\GroupsController@index');
+            $api->post('groups', 'App\Api\V1\Controllers\GroupsController@create');
+            $api->put('groups/{group}', 'App\Api\V1\Controllers\GroupsController@update');
+            $api->delete('groups/{group}', 'App\Api\V1\Controllers\GroupsController@delete');
         }
     );
 
