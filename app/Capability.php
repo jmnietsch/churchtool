@@ -15,10 +15,12 @@ final class Capability
      * Maximum valid capability
      */
     const MAX_CAPABILITY = 0x1111;
+
     /**
      * View every users first and last name.
      */
     const VIEW_USER_NAMES = (1 << 0);
+
     /**
      * View every users address data like e-mail,
      * private address, phone number etc.
@@ -26,12 +28,14 @@ final class Capability
      * Implies VIEW_USER_NAMES.
      */
     const VIEW_USER_ADDRESS_DATA = (1 << 1) | Capability::VIEW_USER_NAMES;
+
     /**
      * View every users date of birth
      *
      * Implies VIEW_USER_NAMES.
      */
     const VIEW_USER_DATE_OF_BIRTH = (1 << 2) | Capability::VIEW_USER_NAMES;
+
     /**
      * View all additional user data that is specified via configuration as well as
      * their group memberships.
@@ -41,12 +45,18 @@ final class Capability
     const VIEW_USER_ATTRIBUTES = (1 << 3)
     | Capability::VIEW_USER_ADDRESS_DATA
     | Capability::VIEW_USER_DATE_OF_BIRTH;
+
     /**
-     * Create, update and delete users.
+     * Create, update and delete users. Also create, update and delete group memberships.
      *
      * Implies VIEW_USER_ATTRIBUTES.
      */
     const MANAGE_USERS = (1 << 4) | Capability::VIEW_USER_ATTRIBUTES;
+
+    /**
+     * Create, update and delete groups.
+     */
+    const MANAGE_GROUPS = (1 << 5);
 
     /**
      * This class must not be instantiated.
@@ -85,6 +95,31 @@ final class Capability
             if ($capability & (1 << $i)) {
                 array_push($result, $lookup[$i]);
             }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Convert an array to an integer capability.
+     *
+     * @throws InvalidCapabilityException
+     * @param array [string] $array
+     * @return integer
+     */
+    public static function fromArray($array)
+    {
+        $result = 0b0;
+
+        $props = (new \ReflectionClass('\App\Capability'))->getConstants();
+        $lookup = array_slice($props, 1);
+
+        foreach ($array as $entry) {
+            if (!array_key_exists($entry, $lookup)) {
+                throw new InvalidCapabilityException();
+            }
+
+            $result |= $lookup[$entry];
         }
 
         return $result;

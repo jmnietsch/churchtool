@@ -85,6 +85,16 @@ class CapabilityTest extends TestCase
         $this->assertArraySubset($is, $expected);
     }
 
+    public function testCapabilitiesFromArray()
+    {
+        $array = ['MANAGE_USERS', 'MANAGE_GROUPS'];
+        $expected = C::MANAGE_USERS | C::MANAGE_GROUPS;
+
+        $actual = C::fromArray($array);
+
+        $this->assertEquals($expected, $actual);
+    }
+
     /**
      * Set up a user that is member of two groups and one that is admin
      * of the two groups.
