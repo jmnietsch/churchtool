@@ -58,36 +58,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Return the groups this user is member of.
-     *
-     * @return Group[]
-     */
-    public function groupsMember()
-    {
-        return $this->groups()->wherePivot('is_admin', '=', false);
-    }
-
-    /**
-     * Return the groups this user belongs to.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function groups()
-    {
-        return $this->belongsToMany('App\Group')->withPivot('is_admin')->withTimestamps();
-    }
-
-    /**
-     * Return the groups where this user is admin.
-     *
-     * @return Group[]
-     */
-    public function groupsAdmin()
-    {
-        return $this->groups()->wherePivot('is_admin', '=', true);
-    }
-
-    /**
      * Does user have this capability?
      *
      * @param integer $capability
@@ -118,5 +88,64 @@ class User extends Authenticatable
         }
     }
 
+    /**
+     * Is this user admin of the given group?
+     *
+     * @return boolean
+     */
+    public function isAdminOf(Group $group)
+    {
+        return is_null($this->groupsAdmin()->find($group->id)) ? false : true;
+    }
+
+    /**
+     * Begin query the groups this user is member of.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function groupsAdmin()
+    {
+        return $this->groups()->wherePivot('is_admin', '=', true);
+    }
+
+    /**
+     * Begin query the groups this user is admin of.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group')->withPivot('is_admin')->withTimestamps();
+    }
+
+    /**
+     * Is this user member of the given group?
+     *
+     * @return boolean
+     */
+    public function isMemberOf(Group $group)
+    {
+        return is_null($this->groupsMember()->find($group->id)) ? false : true;
+    }
+
+    /**
+     * Begin query the groups this user is admin or member of.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function groupsMember()
+    {
+        return $this->groups()->wherePivot('is_admin', '=', false);
+    }
+
+    /**
+     * Is this user admin or member of the given group
+     *
+     * @return boolean
+     */
+    public function isAdminOrMemberOf(Group $group)
+    {
+        return is_null($this->groups()->find($group->id)) ? false : true;
+    }
 
 }
