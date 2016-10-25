@@ -4,7 +4,6 @@ namespace App\Api\V1\Controllers;
 
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
@@ -14,7 +13,7 @@ use Illuminate\Routing\Controller;
  */
 class BaseController extends Controller
 {
-    use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests, Helpers;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Helpers;
 
     /**
      * Converts the keys in the given array to snake case.

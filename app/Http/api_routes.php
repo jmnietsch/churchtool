@@ -9,7 +9,7 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
     $api->post('auth/reset', 'App\Api\V1\Controllers\AuthController@reset');
 
     $api->group(
-        ['middleware' => 'api.auth'],
+        ['middleware' => ['api.auth', 'bindings']],
         function (Dingo\Api\Routing\Router $api) {
 
             $api->get('users', 'App\Api\V1\Controllers\UsersController@index');

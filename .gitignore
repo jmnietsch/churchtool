@@ -125,6 +125,7 @@ app/storage/
 bootstrap/cache/*
 !bootstrap/cache/.gitkeep
 storage/
+!storage/**/.gitkeep
 .env.*.php
 .env.php
 .env
