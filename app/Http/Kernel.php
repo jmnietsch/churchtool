@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 
 class Kernel extends HttpKernel
 {
@@ -32,9 +33,14 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
-        'api' => [
+        /**
+         * We include other middleware after the `json-api` middleware so that their responses
+         * get converted into a JSON API response.
+         */
+        'api-v1' => [
+            'json-api:v1',
+            CheckForMaintenanceMode::class,
             'throttle:60,1',
-            'bindings',
         ],
     ];
 

@@ -99,9 +99,10 @@ return [
     */
     'schemas' => [
         'defaults' => [
-            //'App\Person' => 'App\JsonApi\Schemas\PeopleSchema',
         ],
-        'v1' => [],
+        'v1' => [
+            'App\User' => 'App\JsonApi\Users\Schema',
+        ],
     ],
 
     /*
@@ -122,7 +123,7 @@ return [
     */
     'eloquent-adapter' => [
         'map' => [
-            //'people' => 'App\Person',
+            'users' => 'App\User',
         ],
         'columns' => [],
     ],
