@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e41547cdf4bbb5d92441e041d274e00f",
-    "content-hash": "b5ff64679b2414eb7019ec1854063a80",
+    "hash": "26b032e5d9bd9a1a9596b9a4105aa3d4",
+    "content-hash": "e6e4a6a216b47819bbd9c5c95ec12e84",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -60,6 +60,122 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "cloudcreativity/json-api",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cloudcreativity/json-api.git",
+                "reference": "cb06e9753c91eeafd26dd68c5a0766137c254365"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cloudcreativity/json-api/zipball/cb06e9753c91eeafd26dd68c5a0766137c254365",
+                "reference": "cb06e9753c91eeafd26dd68c5a0766137c254365",
+                "shasum": ""
+            },
+            "require": {
+                "neomerx/json-api": "^0.8.8",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "guzzlehttp/psr7": "^1.3",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7.x-dev",
+                    "dev-master": "0.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CloudCreativity\\JsonApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "lindyhopchris",
+                    "email": "info@cloudcreativity.co.uk"
+                }
+            ],
+            "description": "Framework agnostic JSON API serialization and deserialization.",
+            "homepage": "https://github.com/cloudcreativity/json-api",
+            "keywords": [
+                "JSON-API",
+                "api",
+                "cloudcreativity",
+                "json",
+                "jsonapi",
+                "jsonapi.org"
+            ],
+            "time": "2016-10-21 11:06:32"
+        },
+        {
+            "name": "cloudcreativity/laravel-json-api",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cloudcreativity/laravel-json-api.git",
+                "reference": "c70f6ff5ebc0965bc8226ac78aecb01297c4ffee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cloudcreativity/laravel-json-api/zipball/c70f6ff5ebc0965bc8226ac78aecb01297c4ffee",
+                "reference": "c70f6ff5ebc0965bc8226ac78aecb01297c4ffee",
+                "shasum": ""
+            },
+            "require": {
+                "cloudcreativity/json-api": "^0.6.0",
+                "laravel/framework": "5.1.*|5.2.*|5.3.*",
+                "neomerx/json-api": "^0.8.9",
+                "php": ">=5.5.0",
+                "symfony/psr-http-message-bridge": "^0.2.0",
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5.x-dev",
+                    "dev-develop": "0.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CloudCreativity\\LaravelJsonApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Cloud Creativity Ltd",
+                    "email": "info@cloudcreativity.co.uk"
+                }
+            ],
+            "description": "JSON API (jsonapi.org) support for Laravel applications.",
+            "homepage": "https://github.com/cloudcreativity/laravel-json-api",
+            "keywords": [
+                "JSON-API",
+                "api",
+                "cloudcreativity",
+                "json",
+                "jsonapi",
+                "jsonapi.org",
+                "laravel"
+            ],
+            "time": "2016-10-21 12:21:29"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -690,6 +806,60 @@
             "time": "2015-06-29 05:41:44"
         },
         {
+            "name": "neomerx/json-api",
+            "version": "v0.8.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neomerx/json-api.git",
+                "reference": "f77b3e4e61a0539dac52f0c9c589e806489abe18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neomerx/json-api/zipball/f77b3e4e61a0539dac52f0c9c589e806489abe18",
+                "reference": "f77b3e4e61a0539dac52f0c9c589e806489abe18",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "psr/http-message": "^1.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.4",
+                "monolog/monolog": "^1.18",
+                "phpunit/phpunit": "^4.6 || ^5.0",
+                "scrutinizer/ocular": "^1.3",
+                "squizlabs/php_codesniffer": "^2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Neomerx\\JsonApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "neomerx",
+                    "email": "info@neomerx.com"
+                }
+            ],
+            "description": "Framework agnostic JSON API (jsonapi.org) implementation",
+            "homepage": "https://github.com/neomerx/json-api",
+            "keywords": [
+                "JSON-API",
+                "api",
+                "json",
+                "jsonapi",
+                "jsonapi.org",
+                "neomerx"
+            ],
+            "time": "2016-09-04 14:49:04"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.21.0",
             "source": {
@@ -932,6 +1102,56 @@
                 "x509"
             ],
             "time": "2015-01-28 21:50:33"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/log",
@@ -1764,6 +1984,60 @@
             "time": "2016-09-29 14:13:09"
         },
         {
+            "name": "symfony/psr-http-message-bridge",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/psr-http-message-bridge.git",
+                "reference": "dc7e308e1dc2898a46776e2221a643cb08315453"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/dc7e308e1dc2898a46776e2221a643cb08315453",
+                "reference": "dc7e308e1dc2898a46776e2221a643cb08315453",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/http-message": "~1.0",
+                "symfony/http-foundation": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~2.7|~3.0"
+            },
+            "suggest": {
+                "zendframework/zend-diactoros": "To use the Zend Diactoros factory"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bridge\\PsrHttpMessage\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "PSR HTTP message bridge",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr-7"
+            ],
+            "time": "2015-05-29 17:57:12"
+        },
+        {
             "name": "symfony/routing",
             "version": "v3.1.5",
             "source": {
@@ -2077,6 +2351,56 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "zendframework/zend-diactoros",
+            "version": "1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-diactoros.git",
+                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/969ff423d3f201da3ff718a5831bb999bb0669b0",
+                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "~1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6 || ^5.5",
+                "squizlabs/php_codesniffer": "^2.3.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev",
+                    "dev-develop": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Diactoros\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "PSR HTTP Message implementations",
+            "homepage": "https://github.com/zendframework/zend-diactoros",
+            "keywords": [
+                "http",
+                "psr",
+                "psr-7"
+            ],
+            "time": "2016-10-11 13:25:21"
         }
     ],
     "packages-dev": [

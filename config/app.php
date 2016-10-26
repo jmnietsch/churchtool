@@ -160,6 +160,7 @@ return [
          * Third Party Providers...
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        CloudCreativity\LaravelJsonApi\ServiceProvider::class,
     ],
 
     /*
@@ -211,6 +212,7 @@ return [
          */
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'JsonApi' => CloudCreativity\LaravelJsonApi\Facade::class,
     ],
 
 ];

@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => 'json-api:v1'], function () {
+
+});
