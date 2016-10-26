@@ -160,7 +160,6 @@ return [
          * Third Party Providers...
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class,
     ],
 
     /*
