@@ -8,6 +8,17 @@ use CloudCreativity\JsonApi\Http\Requests\RequestHandler;
 
 class Request extends RequestHandler
 {
+
+    protected $hasMany = [
+        'groups-admin',
+        'groups-member'
+    ];
+
+    protected $allowedIncludePaths = [
+        'groups-admin',
+        'groups-member'
+    ];
+
     /**
      * Request constructor.
      * @param Validators $validator

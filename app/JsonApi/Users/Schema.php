@@ -4,6 +4,8 @@
 namespace App\JsonApi\Users;
 
 
+use App\User;
+use CloudCreativity\JsonApi\Exceptions\RuntimeException;
 use CloudCreativity\LaravelJsonApi\Schema\EloquentSchema;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,6 +35,33 @@ class Schema extends EloquentSchema
     public function getResourceType()
     {
         return self::RESOURCE_TYPE;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getRelationships($resource, $isPrimary, array $includeRelationships)
+    {
+        /** @var User $resource */
+
+        if (!$resource instanceof User) {
+            throw new RuntimeException('Expected a user model.');
+        }
+
+        return [
+            'groups-admin' => [
+                self::SHOW_SELF => true,
+                self::SHOW_RELATED => true,
+                self::SHOW_DATA => isset($includeRelationships['groups-admin']) ? true : false,
+                self::DATA => $resource->groupsAdmin,
+            ],
+            'groups-member' => [
+                self::SHOW_SELF => true,
+                self::SHOW_RELATED => true,
+                self::SHOW_DATA => isset($includeRelationships['groups-member']) ? true : false,
+                self::DATA => $resource->groupsMember,
+            ]
+        ];
     }
 
     /**

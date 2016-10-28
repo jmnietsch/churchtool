@@ -125,7 +125,7 @@ return [
     'eloquent-adapter' => [
         'map' => [
             'users' => 'App\User',
-            'grouos' => 'App\Group'
+            'groups' => 'App\Group'
         ],
         'columns' => [],
     ],

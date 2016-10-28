@@ -7,10 +7,10 @@ namespace App\Http\Controllers\Api;
 use App\JsonApi\Users\Hydrator;
 use App\JsonApi\Users\Request;
 use App\User;
-use CloudCreativity\LaravelJsonApi\Http\Controllers\EloquentController;
+use CloudCreativity\JsonApi\Contracts\Http\Requests\RequestInterface as JsonApiRequest;
 use CloudCreativity\LaravelJsonApi\Search\SearchAll;
 
-class UsersController extends EloquentController
+class UsersController extends BaseController
 {
 
     /**
@@ -25,8 +25,73 @@ class UsersController extends EloquentController
     /**
      * @inheritdoc
      */
+    public function replaceRelationship(JsonApiRequest $request)
+    {
+        /** @var User $user */
+        $user = $request->getRecord();
+
+        $ids = $this->getIdsFromRelationshipRequest($request, 'groups');
+
+        if (count($ids) > 0) {
+            $this->transaction(function () use ($ids, $user, $request) {
+                $update = array_combine($ids, array_fill(0, count($ids), [
+                    'is_admin' => $request->getRelationshipName() == 'groups-member' ? false : true
+                ]));
+                $user->groups()->sync($update);
+            });
+        }
+
+        return $this->reply()->relationship($user->{$this->keyForRelationship($request->getRelationshipName())});
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function addToRelationship(JsonApiRequest $request)
+    {
+        /** @var User $user */
+        $user = $request->getRecord();
+
+        $ids = $this->getIdsFromRelationshipRequest($request, 'groups');
+
+        if (count($ids) > 0) {
+            $this->transaction(function () use ($ids, $user, $request) {
+                $update = array_combine($ids, array_fill(0, count($ids), [
+                    'is_admin' => $request->getRelationshipName() == 'groups-member' ? false : true
+                ]));
+                $user->groups()->syncWithoutDetaching($update);
+            });
+        }
+
+        return $this->reply()->relationship($user->{$this->keyForRelationship($request->getRelationshipName())});
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function removeFromRelationship(JsonApiRequest $request)
+    {
+        /** @var User $user */
+        $user = $request->getRecord();
+
+        $ids = $this->getIdsFromRelationshipRequest($request, 'groups');
+
+        if (count($ids) > 0) {
+            $this->transaction(function () use ($ids, $user, $request) {
+                $user->groups()->detach($ids);
+            });
+        }
+
+        return $this->reply()->relationship($user->{$this->keyForRelationship($request->getRelationshipName())});
+    }
+
+    /**
+     * @inheritdoc
+     */
     protected function getRequestHandler()
     {
         return Request::class;
     }
+
+
 }
