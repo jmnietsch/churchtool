@@ -21,8 +21,8 @@ class Schema extends EloquentSchema
      */
     protected $attributes = [
         'name',
-        'member-capabilities',
-        'admin-capabilities',
+        'member_capabilities',
+        'admin_capabilities',
     ];
 
     /**

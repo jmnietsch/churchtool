@@ -22,4 +22,5 @@ Route::group([
     'as' => 'api-v1::',
 ], function () {
     JsonApi::resource('users');
+    JsonApi::resource('groups');
 });

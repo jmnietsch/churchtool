@@ -27,10 +27,6 @@ class Schema extends EloquentSchema
         'active'
     ];
 
-    protected $serializer = [
-        'date_of_birth' => '\App\JsonApi\Serializer\Date',
-    ];
-
     /**
      * @inheritdoc
      */
