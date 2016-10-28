@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\JsonApi\Users;
+namespace App\JsonApi\Groups;
 
 
+use App\Capability;
 use CloudCreativity\LaravelJsonApi\Schema\EloquentSchema;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,22 +14,15 @@ class Schema extends EloquentSchema
     /**
      * The json-api resource type of the User model.
      */
-    const RESOURCE_TYPE = 'users';
+    const RESOURCE_TYPE = 'groups';
 
     /**
      * @inheritdoc
      */
     protected $attributes = [
-        'email',
-        'sex',
-        'first_name',
-        'last_name',
-        'date_of_birth',
-        'active'
-    ];
-
-    protected $serializer = [
-        'date_of_birth' => '\App\JsonApi\Serializer\Date',
+        'name',
+        'member-capabilities',
+        'admin-capabilities',
     ];
 
     /**
@@ -44,9 +38,8 @@ class Schema extends EloquentSchema
      */
     protected function serializeAttribute($value, Model $model, $modelKey)
     {
-        if ($modelKey == 'date_of_birth') {
-            /** @var \DateTime $value */
-            return $value->format('Y-m-d');
+        if ($modelKey == 'member_capabilities' or $modelKey == 'admin_capabilities') {
+            $value = Capability::toArray($value);
         }
 
         return parent::serializeAttribute(

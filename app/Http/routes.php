@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Route::group([
     'middleware' => 'api-v1',
-    'namespace' => 'Api'
+    'namespace' => 'Api',
+    'prefix' => 'api/v1',
+    'as' => 'api-v1::',
 ], function () {
     JsonApi::resource('users');
 });
