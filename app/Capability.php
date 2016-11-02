@@ -59,7 +59,7 @@ final class Capability
     const VIEW_GROUPS = (1 << 5);
 
     /**
-     * Create, update and delete groups.
+     * Create, update and delete groups as well as create, update and delete group memberships.
      *
      * Implies VIEW_GROUPS.
      */

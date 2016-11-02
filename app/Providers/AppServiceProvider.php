@@ -3,11 +3,7 @@
 namespace App\Providers;
 
 use DB;
-use Dingo\Api\Transformer\Adapter\Fractal;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\ServiceProvider;
-use League\Fractal\Manager;
-use League\Fractal\Serializer\JsonApiSerializer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         if (DB::connection() instanceof \Illuminate\Database\SQLiteConnection) {
             DB::statement(DB::raw('PRAGMA foreign_keys=1'));
         }
+
+        DB::connection()->enableQueryLog();
     }
 
     /**

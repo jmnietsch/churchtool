@@ -8,6 +8,12 @@ use CloudCreativity\JsonApi\Http\Requests\RequestHandler;
 
 class Request extends RequestHandler
 {
+
+    protected $hasMany = [
+        'admins',
+        'members',
+    ];
+
     /**
      * Request constructor.
      * @param Validators $validator

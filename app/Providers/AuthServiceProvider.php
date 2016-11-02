@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Capability;
+use App\Group;
 use App\User;
 use Gate;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
@@ -27,25 +28,32 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(GateContract $gate)
     {
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
 
         /**
          * Check if user is allowed to access an arbitrary user object.
          */
         Gate::define(
             'get-user',
-            function (User $user) {
+            function (User $user, User $subject = null) {
+                if (!is_null($subject) and $subject->id == $user->id) {
+                    return true;
+                }
                 return $user->hasCapability(Capability::VIEW_USER_NAMES);
             }
         );
 
         /**
-         * Check if user is allowed to update a user object.
+         * Check if user is allowed to update a user object (excluding group memberships)
          */
         Gate::define(
             'update-user',
             function (User $user, User $subject) {
-                return $user->hasCapability(Capability::MANAGE_USERS) || ($user == $subject);
+                if ($subject->id == $user->id) {
+                    return true;
+                }
+
+                return $user->hasCapability(Capability::MANAGE_USERS);
             }
         );
 
@@ -117,6 +125,32 @@ class AuthServiceProvider extends ServiceProvider
             'delete-group',
             function (User $user) {
                 return $user->hasCapability(Capability::MANAGE_GROUPS);
+            }
+        );
+
+        /**
+         * Check if user is allowed to manage the members of $group
+         */
+        Gate::define(
+            'group-manage-members',
+            function (User $user, Group $group) {
+                if ($user->isAdminOf($group)) {
+                    return true;
+                }
+
+                return $user->hasCapability(Capability::MANAGE_USERS)
+                or $user->hasCapability(Capability::MANAGE_GROUPS);
+            }
+        );
+
+        /**
+         * Check if user is allowed to manage the admins of groups
+         */
+        Gate::define(
+            'group-manage-admins',
+            function (User $user) {
+                return $user->hasCapability(Capability::MANAGE_USERS)
+                or $user->hasCapability(Capability::MANAGE_GROUPS);
             }
         );
 

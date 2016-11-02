@@ -1,6 +1,10 @@
 <?php
 
+namespace App\Tests\Unit;
+
 use App\Capability as C;
+use App\Tests\TestCase;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CapabilityTest extends TestCase
@@ -105,8 +109,8 @@ class CapabilityTest extends TestCase
 
         $this->group1 = \App\Group::create(array('name' => 'Test Group 1'));
         $this->group2 = \App\Group::create(array('name' => 'Test Group 2'));
-        $this->member = factory(App\User::class, 1)->create();
-        $this->admin = factory(App\User::class, 1)->create();
+        $this->member = factory(User::class, 1)->create();
+        $this->admin = factory(User::class, 1)->create();
         $this->member->groups()->saveMany(array($this->group1, $this->group2));
         $this->admin->groups()->saveMany(array($this->group1, $this->group2), [
             ['is_admin' => true],

@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Tests\Unit;
+
+use App\Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserTest extends TestCase

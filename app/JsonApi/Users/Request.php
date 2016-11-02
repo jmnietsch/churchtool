@@ -25,7 +25,7 @@ class Request extends RequestHandler
      */
     public function __construct(Validators $validator)
     {
-        parent::__construct(null, $validator);
+        parent::__construct(new Authorizer(), $validator);
     }
 
     /**

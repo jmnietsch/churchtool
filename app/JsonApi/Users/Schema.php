@@ -4,10 +4,13 @@
 namespace App\JsonApi\Users;
 
 
+use App\Capability;
 use App\User;
+use Auth;
 use CloudCreativity\JsonApi\Exceptions\RuntimeException;
 use CloudCreativity\LaravelJsonApi\Schema\EloquentSchema;
 use Illuminate\Database\Eloquent\Model;
+use Neomerx\JsonApi\Contracts\Schema\SchemaFactoryInterface;
 
 class Schema extends EloquentSchema
 {
@@ -21,13 +24,23 @@ class Schema extends EloquentSchema
      * @inheritdoc
      */
     protected $attributes = [
-        'email',
         'sex',
         'first_name',
         'last_name',
-        'date_of_birth',
         'active'
     ];
+
+    public function __construct(SchemaFactoryInterface $factory)
+    {
+        if (Auth::user()->hasCapability(Capability::VIEW_USER_ADDRESS_DATA)) {
+            $this->attributes[] = 'email';
+        }
+        if (Auth::user()->hasCapability(Capability::VIEW_USER_DATE_OF_BIRTH)) {
+            $this->attributes[] = 'date_of_birth';
+        }
+
+        parent::__construct($factory);
+    }
 
     /**
      * @inheritdoc
