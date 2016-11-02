@@ -352,6 +352,9 @@ class UsersTest extends TestCase
         );
     }
 
+    /**
+     * Test that user with MANAGE_USERS capability can delete an arbitrary user
+     */
     public function testDeleteUser()
     {
         $model = User::find(1);
@@ -360,6 +363,9 @@ class UsersTest extends TestCase
         $this->assertModelDeleted($model);
     }
 
+    /**
+     * Test that user without MANAGE_USERS capability cannot delete an arbitrary user
+     */
     public function testUnauthorizedDeleteUser()
     {
         $email = User::find(1)->email;
@@ -375,6 +381,9 @@ class UsersTest extends TestCase
         );
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function getResourceType()
     {
         return 'users';
