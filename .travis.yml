@@ -3,9 +3,12 @@ language: php
 php:
   - 7.0
 
+services:
+  - mysql
+
 before_script:
   - cp .env.travis .env
-  - mysql -e 'create database homestead;'
+  - mysql -e 'create database churchtool;'
   - composer self-update
   - composer install --no-interaction
 
