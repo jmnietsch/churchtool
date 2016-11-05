@@ -42,7 +42,7 @@ class GroupUserTableSeeder extends Seeder
 
         // user id=5 is not member of any group
 
-        // user id=6 is admin of group 'Raumverwaltung' and member of group 'Mitglieder'
+        // user id=6 is admin of group 'Gruppenverwaltung' and member of group 'Mitglieder'
         $users[5]->groups()->saveMany(
             [$groups[2], $groups[0]],
             [['is_admin' => true], ['is_admin' => false]]

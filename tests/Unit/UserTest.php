@@ -2,7 +2,9 @@
 
 namespace App\Tests\Unit;
 
+use App\Group;
 use App\Tests\TestCase;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserTest extends TestCase
@@ -36,6 +38,42 @@ class UserTest extends TestCase
         $this->assertTrue($user1->isAdminOrMemberOf($groups[0]));
         $this->assertTrue($user1->isAdminOrMemberOf($groups[0]));
         $this->assertFalse($user2->isAdminOrMemberOf($groups[0]));
+    }
+
+    public function testSetAdmin()
+    {
+        /** @var User $user */
+        $user = factory(User::class)->create();
+        $group = Group::find(1);
+
+        $user->setAdminOf($group);
+
+        $this->seeInDatabase(
+            'group_user',
+            [
+                'user_id' => $user->id,
+                'group_id' => $group->id,
+                'is_admin' => true,
+            ]
+        );
+    }
+
+    public function testSetMember()
+    {
+        /** @var User $user */
+        $user = factory(User::class)->create();
+        $group = Group::find(1);
+
+        $user->setMemberOf($group);
+
+        $this->seeInDatabase(
+            'group_user',
+            [
+                'user_id' => $user->id,
+                'group_id' => $group->id,
+                'is_admin' => false,
+            ]
+        );
     }
 
     /**
