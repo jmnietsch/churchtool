@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\JsonApi\Users\Hydrator;
 use App\JsonApi\Users\Request;
-use App\User;
+use App\Models\User\User;
 use CloudCreativity\LaravelJsonApi\Search\SearchAll;
 
 class UsersController extends BaseController

@@ -91,10 +91,10 @@ class UsersTableSeeder extends Seeder
             'active',
         ];
 
-        \App\User::unguard();
+        \App\Models\User\User::unguard();
         foreach ($data as $user) {
-            \App\User::create(array_combine($keys, $user));
+            \App\Models\User\User::create(array_combine($keys, $user));
         }
-        \App\User::reguard();
+        \App\Models\User\User::reguard();
     }
 }

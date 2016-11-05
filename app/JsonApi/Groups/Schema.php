@@ -4,7 +4,7 @@
 namespace App\JsonApi\Groups;
 
 
-use App\Capability;
+use App\Models\User\Capability;
 use CloudCreativity\LaravelJsonApi\Schema\EloquentSchema;
 use Illuminate\Database\Eloquent\Model;
 

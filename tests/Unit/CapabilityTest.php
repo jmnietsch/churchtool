@@ -2,9 +2,9 @@
 
 namespace App\Tests\Unit;
 
-use App\Capability as C;
+use App\Models\User\Capability as C;
+use App\Models\User\User;
 use App\Tests\TestCase;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CapabilityTest extends TestCase
@@ -12,22 +12,22 @@ class CapabilityTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User\User
      */
     private $member;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User\User
      */
     private $admin;
 
     /**
-     * @var \App\Group
+     * @var \App\Models\User\Group
      */
     private $group1;
 
     /**
-     * @var \App\Group
+     * @var \App\Models\User\Group
      */
     private $group2;
 
@@ -85,7 +85,7 @@ class CapabilityTest extends TestCase
     {
         $c = C::VIEW_USER_ADDRESS_DATA;
         $expected = ['VIEW_USER_NAMES', 'VIEW_USER_ADDRESS_DATA'];
-        $is = \App\Capability::toArray($c);
+        $is = \App\Models\User\Capability::toArray($c);
         $this->assertArraySubset($is, $expected);
     }
 
@@ -107,8 +107,8 @@ class CapabilityTest extends TestCase
     {
         parent::setUp();
 
-        $this->group1 = \App\Group::create(array('name' => 'Test Group 1'));
-        $this->group2 = \App\Group::create(array('name' => 'Test Group 2'));
+        $this->group1 = \App\Models\User\Group::create(array('name' => 'Test Group 1'));
+        $this->group2 = \App\Models\User\Group::create(array('name' => 'Test Group 2'));
         $this->member = factory(User::class, 1)->create();
         $this->admin = factory(User::class, 1)->create();
         $this->member->groups()->saveMany(array($this->group1, $this->group2));

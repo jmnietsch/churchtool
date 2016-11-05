@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\User;
 
 use App\Exceptions\InvalidCapabilityException;
 
@@ -95,7 +95,7 @@ final class Capability
     {
         $result = [];
 
-        $props = (new \ReflectionClass('\App\Capability'))->getConstants();
+        $props = (new \ReflectionClass('\App\Models\User\Capability'))->getConstants();
         $lookup = array_keys(array_slice($props, 1));
 
         for ($i = 0; $i < 63; ++$i) {
@@ -118,7 +118,7 @@ final class Capability
     {
         $result = 0b0;
 
-        $props = (new \ReflectionClass('\App\Capability'))->getConstants();
+        $props = (new \ReflectionClass('\App\Models\User\Capability'))->getConstants();
         $lookup = array_slice($props, 1);
 
         foreach ($array as $entry) {

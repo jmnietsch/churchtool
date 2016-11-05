@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\Models\User;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -105,7 +105,8 @@ class User extends Authenticatable
      */
     public function groups()
     {
-        return $this->belongsToMany('App\Group')->withPivot('is_admin')->withTimestamps();
+        return $this->belongsToMany('App\Models\User\Group')->withPivot('is_admin')->withTimestamps(
+        );
     }
 
     /**

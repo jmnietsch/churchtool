@@ -2,7 +2,7 @@
 
 namespace App\Tests\Integration;
 
-use App\User;
+use App\Models\User\User;
 
 class UsersTest extends TestCase
 {

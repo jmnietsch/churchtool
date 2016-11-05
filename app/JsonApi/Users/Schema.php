@@ -4,8 +4,8 @@
 namespace App\JsonApi\Users;
 
 
-use App\Capability;
-use App\User;
+use App\Models\User\Capability;
+use App\Models\User\User;
 use Auth;
 use CloudCreativity\JsonApi\Exceptions\RuntimeException;
 use CloudCreativity\LaravelJsonApi\Schema\EloquentSchema;

@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Capability;
-use App\Group;
-use App\User;
+use App\Models\User\Capability;
+use App\Models\User\Group;
+use App\Models\User\User;
 use Gate;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

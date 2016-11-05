@@ -4,7 +4,7 @@
 namespace App\JsonApi\Users;
 
 
-use App\User;
+use App\Models\User\User;
 use CloudCreativity\JsonApi\Contracts\Object\RelationshipInterface;
 use CloudCreativity\LaravelJsonApi\Hydrator\EloquentHydrator;
 

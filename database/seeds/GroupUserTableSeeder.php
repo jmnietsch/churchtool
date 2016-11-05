@@ -11,10 +11,10 @@ class GroupUserTableSeeder extends Seeder
      */
     public function run()
     {
-        /** @var \App\User[] $users */
-        $users = \App\User::all();
-        /** @var \App\Group[] $groups */
-        $groups = \App\Group::all();
+        /** @var \App\Models\User\User[] $users */
+        $users = \App\Models\User\User::all();
+        /** @var \App\Models\User\Group[] $groups */
+        $groups = \App\Models\User\Group::all();
 
         // user id=1 is member of groups 'Mitglieder' and 'Alle'
         $users[0]->groups()->saveMany(

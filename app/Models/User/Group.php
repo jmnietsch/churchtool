@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\User;
 
 use App\Exceptions\InvalidCapabilityException;
 use Illuminate\Database\Eloquent\Model;
@@ -34,7 +34,8 @@ class Group extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\User')->withPivot('is_admin')->withTimestamps();
+        return $this->belongsToMany('App\Models\User\User')->withPivot('is_admin')->withTimestamps(
+        );
     }
 
     /**

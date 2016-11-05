@@ -1,6 +1,6 @@
 <?php
 
-use App\Capability;
+use App\Models\User\Capability;
 use Illuminate\Database\Seeder;
 
 class GroupsTableSeeder extends Seeder
@@ -34,10 +34,10 @@ class GroupsTableSeeder extends Seeder
         ];
         $keys = ['id', 'name', 'member_capabilities', 'admin_capabilities'];
 
-        \App\Group::unguard();
+        \App\Models\User\Group::unguard();
         foreach ($data as $user) {
-            \App\Group::create(array_combine($keys, $user));
+            \App\Models\User\Group::create(array_combine($keys, $user));
         }
-        \App\Group::reguard();
+        \App\Models\User\Group::reguard();
     }
 }

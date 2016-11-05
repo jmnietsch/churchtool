@@ -1,6 +1,6 @@
 <?php
 
-use app\Capability as C;
+use App\Models\User\Capability as C;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +13,9 @@ use app\Capability as C;
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(
+    \App\Models\User\User::class,
+    function (Faker\Generator $faker) {
     $sex = $faker->boolean() ? 'm' : 'f';
     return [
         'email' => $faker->safeEmail,
@@ -25,7 +27,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Group::class, function () {
+$factory->define(
+    \App\Models\User\Group::class,
+    function () {
     static $i = 0;
 
     $keys = [

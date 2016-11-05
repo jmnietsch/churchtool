@@ -101,8 +101,8 @@ return [
         'defaults' => [
         ],
         'v1' => [
-            'App\User' => 'App\JsonApi\Users\Schema',
-            'App\Group' => 'App\JsonApi\Groups\Schema',
+            'App\Models\User\User' => 'App\JsonApi\Users\Schema',
+            'App\Models\User\Group' => 'App\JsonApi\Groups\Schema',
         ],
     ],
 
@@ -124,8 +124,8 @@ return [
     */
     'eloquent-adapter' => [
         'map' => [
-            'users' => 'App\User',
-            'groups' => 'App\Group'
+            'users' => 'App\Models\User\User',
+            'groups' => 'App\Models\User\Group',
         ],
         'columns' => [],
     ],

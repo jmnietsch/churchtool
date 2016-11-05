@@ -4,9 +4,9 @@
 namespace App\Http\Controllers\Api;
 
 
-use App\Group;
 use App\JsonApi\Groups\Hydrator;
 use App\JsonApi\Groups\Request;
+use App\Models\User\Group;
 use CloudCreativity\LaravelJsonApi\Http\Controllers\EloquentController;
 use CloudCreativity\LaravelJsonApi\Search\SearchAll;
 

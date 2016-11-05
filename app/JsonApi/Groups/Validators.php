@@ -4,7 +4,7 @@
 namespace App\JsonApi\Groups;
 
 
-use App\User;
+use App\Models\User\User;
 use CloudCreativity\JsonApi\Contracts\Validators\RelationshipsValidatorInterface;
 use CloudCreativity\LaravelJsonApi\Validators\AbstractValidatorProvider;
 

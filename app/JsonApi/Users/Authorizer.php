@@ -3,12 +3,12 @@
 namespace App\JsonApi\Users;
 
 
-use App\Group;
 use App\JsonApi\Exceptions\UnauthorizedCreateException;
 use App\JsonApi\Exceptions\UnauthorizedReadException;
 use App\JsonApi\Exceptions\UnauthorizedRelationshipUpdateException;
 use App\JsonApi\Exceptions\UnauthorizedUpdateException;
-use App\User;
+use App\Models\User\Group;
+use App\Models\User\User;
 use CloudCreativity\JsonApi\Contracts\Authorizer\AuthorizerInterface;
 use CloudCreativity\JsonApi\Contracts\Object\RelationshipInterface;
 use CloudCreativity\JsonApi\Contracts\Object\ResourceInterface;
