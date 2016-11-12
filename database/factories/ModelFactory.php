@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Room\Room;
 use App\Models\User\Capability as C;
+use App\Models\User\Group;
+use App\Models\User\User;
+use Faker\Generator;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +18,8 @@ use App\Models\User\Capability as C;
 */
 
 $factory->define(
-    \App\Models\User\User::class,
-    function (Faker\Generator $faker) {
+    User::class,
+    function (Generator $faker) {
     $sex = $faker->boolean() ? 'm' : 'f';
     return [
         'email' => $faker->safeEmail,
@@ -28,7 +32,7 @@ $factory->define(
 });
 
 $factory->define(
-    \App\Models\User\Group::class,
+    Group::class,
     function () {
     static $i = 0;
 
@@ -45,3 +49,12 @@ $factory->define(
 
     return array_combine($keys, $values[$i++]);
 });
+
+$factory->define(
+    Room::class,
+    function (Generator $faker) {
+        return [
+            'name' => $faker->city,
+        ];
+    }
+);
